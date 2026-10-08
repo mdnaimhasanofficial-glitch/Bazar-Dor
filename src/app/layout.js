@@ -2,6 +2,8 @@ import { Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { Suspense } from "react";
+import Marque from "./components/Marque";
 
 const geistSans = Noto_Serif_Bengali({
   variable: "--font-geist-sans",
@@ -24,8 +26,11 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <Navbar> </Navbar>
+      <body className="min-h-full">
+        <Suspense fallback={<p>Loading...</p>}>
+          <Navbar> </Navbar>
+          <Marque/>
+        </Suspense>
         
         {children}
 
