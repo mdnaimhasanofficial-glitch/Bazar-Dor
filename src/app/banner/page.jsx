@@ -8,7 +8,7 @@ const date = new Date().toLocaleDateString("bn-BD", {
 
 const Banner = () => {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <section className="mx-auto container px-4 py-6 sm:px-6 lg:px-8">
       <div className="flex flex-col items-center justify-between gap-8 overflow-hidden rounded-3xl border border-green-100 bg-[#f8fcf8] px-6 py-10 shadow-sm sm:px-10 md:flex-row md:px-12 md:py-12">
 
         {/* Left Content */}

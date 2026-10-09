@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const toBn = (num) => {
@@ -11,19 +12,20 @@ export default async function CategoryPage({ params }) {
 
   // API call
   const res = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products?category=${categoryId}`,
+    `https://api.api-store.workers.dev/api/bazardor/products?category=${categoryId}`,
     {
         cache: "no-store",
     },
   );
   const data = await res.json();
 
-  // Dynamic category title & icon from API response
+
   const categoryTitle = data[0]?.categoryNameBn || categoryId;
   const categoryIcon = data[0]?.categoryIcon || "🌾";
 
   return (
-    <div className="min-h-screen bg-[#F0F5F0] py-6 px-4 md:px-8">
+
+      <div className="min-h-screen bg-[#F0F5F0] py-6 px-4 md:px-8">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* 1. Header Banner */}
         <div className="bg-white rounded-2xl p-6 shadow-sm flex items-center gap-4 border border-gray-100">

@@ -1,14 +1,14 @@
 import React from 'react';
 import Marquee from "react-fast-marquee";
 
-// Songkhake Bangla-y convert korar helper function
+
 const toBn = (num) => {
     if (num === undefined || num === null) return '';
     return Number(num).toLocaleString('bn-BD');
 };
 
 const Marque = async () => {
-    const res = await fetch('https://api.abcz.workers.dev/api/bazardor/products');
+    const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products');
     const data = await res.json();
 
     return (

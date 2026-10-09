@@ -7,8 +7,8 @@ const toBn = (num) => {
   return Number(num).toLocaleString('bn-BD');
 };
 
-const AllProduct = async () => {
-  const res = await fetch('https://api.abcz.workers.dev/api/bazardor/products', {
+export default async function  AllProduct() {
+  const res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products`, {
     cache: 'no-store',
   });
   const allProduct = await res.json();
@@ -31,7 +31,7 @@ const AllProduct = async () => {
           const pct = product.change?.pct ?? 0;
 
           return (
-            <Link href={`/product-details`} key={product.id}>
+            <Link href={`/productDetails/${product.id}`} key={product.id}>
                 <div
                 className="bg-white rounded-2xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex flex-col justify-between border border-gray-100 hover:shadow-md transition-shadow"
             >
@@ -103,4 +103,3 @@ const AllProduct = async () => {
   );
 };
 
-export default AllProduct;

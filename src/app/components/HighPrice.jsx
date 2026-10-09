@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
 
-const HighPrice = async () => {
-  const res = await fetch('https://api.abcz.workers.dev/api/bazardor/products', {
+export default async function HighPrice() {
+  const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products', {
     cache: 'no-store'
   });
   const data = await res.json();
@@ -24,7 +24,7 @@ const HighPrice = async () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {highPriceProducts.map((h, i) => {
           return (
-            <Link href={`/product-details`} key={i}>
+            <Link href={`/productDetails/${h.id}`} key={i}>
                 <div
               key={h.id}
               className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
@@ -40,7 +40,7 @@ const HighPrice = async () => {
                   </p>
                 </div>
 
-                <div className="w-12 h-12 relative flex-shrink-0">
+                <div className="w-12 h-12 relative shrink-0">
                   <span className="text-base mr-1.5">{h.image}</span>
                 </div>
               </div>
@@ -77,4 +77,3 @@ const HighPrice = async () => {
   );
 };
 
-export default HighPrice;

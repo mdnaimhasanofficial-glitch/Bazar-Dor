@@ -3,13 +3,9 @@ import Banner from "./banner/page";
 import HighPrice from "./components/HighPrice";
 import Marque from "./components/Marque";
 import LowPrice from "./components/LowPrice";
-import AllProduct from "./components/AllProduct";
-import Loading from "./loading";
 
-// লোডিং স্কেলিটন বা লোডার কম্পোনেন্ট (Optional)
-const ComponentLoader = () => (
-  <div className="p-4 text-center text-gray-500">লোড হচ্ছে...</div>
-);
+import Loading from "./loading";
+import AllProduct from "./all-product/page";
 
 export default function Home() {
   return (
