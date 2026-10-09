@@ -3,8 +3,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Suspense } from "react";
-// import Marque from "./components/Marque";
-
+import Loading from "./loading";
 
 const geistSans = Noto_Serif_Bengali({
   variable: "--font-geist-sans",
@@ -24,21 +23,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} bg-[#F0F5F0] h-full antialiased`}
+      lang="bn"
+      className={`${geistSans.variable} ${geistMono.variable} bg-[#F0F5F0] antialiased`}
     >
-      <body className="min-h-full">
-        <Suspense fallback={<p>Loading...</p>}>
-          <Navbar> </Navbar>
-        
-        
-        
-        {children}
-
-        <Footer></Footer>
+      <body className="min-h-screen flex flex-col justify-between">
+        <Suspense fallback={<Loading/>}>
+          <Navbar />
+            <main className="grow">{children}</main>
+          <Footer />
         </Suspense>
-        
-        </body>
+      </body>
     </html>
   );
 }

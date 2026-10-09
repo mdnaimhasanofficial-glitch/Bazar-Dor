@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const HighPrice = async () => {
@@ -21,9 +22,10 @@ const HighPrice = async () => {
 
       {/* প্রোডাক্ট গ্রিড (প্রথম ৬টি আইটেম) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {highPriceProducts.map((h) => {
+        {highPriceProducts.map((h, i) => {
           return (
-            <div
+            <Link href={`/product-details`} key={i}>
+                <div
               key={h.id}
               className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
             >
@@ -67,6 +69,7 @@ const HighPrice = async () => {
                 )}
               </div>
             </div>
+            </Link>
           );
         })}
       </div>

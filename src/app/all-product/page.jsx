@@ -23,7 +23,7 @@ const AllProduct = async () => {
         </p>
       </div>
 
-      {/* গ্রিড লেআউট */}
+    
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {allProduct.map((product) => {
           const isUp = product.change?.dir === 'up';
@@ -35,7 +35,7 @@ const AllProduct = async () => {
                 <div
                 className="bg-white rounded-2xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex flex-col justify-between border border-gray-100 hover:shadow-md transition-shadow"
             >
-              {/* উপরের অংশ: ইমেজ ও প্রোডাক্ট নেম/ইউনিট */}
+            
               <div className="flex items-center gap-3">
                 {/* ইমেজ কন্টেইনার */}
                 <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center shrink-0 overflow-hidden">

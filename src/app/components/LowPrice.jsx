@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const LowPrice = async () => {
@@ -23,8 +24,9 @@ const LowPrice = async () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {highPriceProducts.map((h) => {
           return (
-            <div
-              key={h.id}
+            <Link key={h.id} href={`/product-detals`}>
+                <div
+              
               className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
             >
               {/* উপরের অংশ: নাম, ইউনিট ও ছবি */}
@@ -67,6 +69,7 @@ const LowPrice = async () => {
                 )}
               </div>
             </div>
+            </Link>
           );
         })}
       </div>
