@@ -2,10 +2,9 @@ import Link from 'next/link';
 import React from 'react';
 
 const NavLinks = async() => {
-    const res = await fetch('https://api.api-store.workers.dev/api/bazardor/categories');
+    const res = await fetch('https://api.abcz.workers.dev/api/bazardor/categories');
     const data = await res.json();
     
-    console.log(data)
     return (
         <div className='flex items-center gap-8 py-4 overflow-x-auto text-sm font-medium text-gray-700'>
             {
