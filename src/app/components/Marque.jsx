@@ -8,7 +8,7 @@ const toBn = (num) => {
 };
 
 const Marque = async () => {
-    const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products');
+    const res = await fetch('https://api.abcz.workers.dev/api/bazardor/products');
     const data = await res.json();
 
     return (
