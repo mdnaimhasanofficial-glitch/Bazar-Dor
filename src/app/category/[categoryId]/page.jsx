@@ -1,31 +1,48 @@
+
+import SortSelect from "@/app/components/SortSelect";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
+
 
 const toBn = (num) => {
   if (num === undefined || num === null || isNaN(num)) return "০";
   return Number(num).toLocaleString("bn-BD");
 };
 
-export default async function CategoryPage({ params }) {
+export default async function CategoryPage({ params, searchParams }) {
   const { categoryId } = await params;
+  const { sort } = (await searchParams) || {}; // query string থেকে sort এর মান নেওয়া
 
   // API call
   const res = await fetch(
     `https://api.abcz.workers.dev/api/bazardor/products?category=${categoryId}`,
     {
-        cache: "no-store",
-    },
+      cache: "no-store",
+    }
   );
-  const data = await res.json();
+  let data = await res.json();
 
+  // ------------------- Sorting Logic -------------------
+  if (Array.isArray(data)) {
+    data = [...data].sort((a, b) => {
+      const priceA = Number(a.today) || 0;
+      const priceB = Number(b.today) || 0;
+
+      if (sort === "low-to-high") {
+        return priceA - priceB; // কম থেকে বেশি
+      } else if (sort === "high-to-low") {
+        return priceB - priceA; // বেশি থেকে কম
+      }
+      return 0; // default
+    });
+  }
+  // -----------------------------------------------------
 
   const categoryTitle = data[0]?.categoryNameBn || categoryId;
   const categoryIcon = data[0]?.categoryIcon || "🌾";
 
   return (
-
-      <div className="min-h-screen bg-[#F0F5F0] py-6 px-4 md:px-8">
+    <div className="min-h-screen bg-[#F0F5F0] py-6 px-4 md:px-8">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* 1. Header Banner */}
         <div className="bg-white rounded-2xl p-6 shadow-sm flex items-center gap-4 border border-gray-100">
@@ -34,6 +51,8 @@ export default async function CategoryPage({ params }) {
               <Image
                 src={categoryIcon}
                 alt={categoryTitle}
+                width={32}
+                height={32}
                 className="w-8 h-8 object-contain"
               />
             ) : (
@@ -52,14 +71,8 @@ export default async function CategoryPage({ params }) {
 
         {/* 2. Sort / Filter Bar */}
         <div className="bg-white rounded-2xl px-6 py-4 shadow-sm flex items-center justify-end border border-gray-100">
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <span>সাজান</span>
-            <select className="bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 text-sm font-medium text-gray-800 outline-none focus:ring-1 focus:ring-emerald-500">
-              <option value="default">ডিফল্ট</option>
-              <option value="low-to-high">দাম: কম থেকে বেশি</option>
-              <option value="high-to-low">দাম: বেশি থেকে কম</option>
-            </select>
-          </div>
+          {/* ক্লায়েন্ট ডাইনামিক সর্ট ড্রপডাউন */}
+          <SortSelect />
         </div>
 
         {/* 3. Product Counter */}
@@ -88,6 +101,8 @@ export default async function CategoryPage({ params }) {
                       <Image
                         src={product.image}
                         alt={product.nameBn || product.name}
+                        width={32}
+                        height={32}
                         className="w-8 h-8 object-contain"
                       />
                     ) : (
