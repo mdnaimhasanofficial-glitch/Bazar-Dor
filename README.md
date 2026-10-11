@@ -44,5 +44,5 @@
 
 ### ১. রিপোজিটরি ক্লোন করুন
 
-git clone [https://github.com/your-username/bazar-dor.git](https://github.com/your-username/bazar-dor.git)
+git clone [https://github.com/mdnaimhasanofficial-glitch/Bazar-Dor.git](https://github.com/your-username/bazar-dor.git)
 cd bazar-dor
