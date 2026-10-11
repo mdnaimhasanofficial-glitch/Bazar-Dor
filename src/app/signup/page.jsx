@@ -1,33 +1,49 @@
-'use client'
+'use client';
+
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+// 1. Toast ইম্পোর্ট করুন (যদি react-hot-toast ব্যবহার করেন)
+import { toast } from "react-hot-toast"; 
+// নোট: আপনি যদি 'sonner' ব্যবহার করেন, তবে লিখুন: import { toast } from "sonner";
 
 const SignUpPage = () => {
+  const [loading, setLoading] = useState(false);
 
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const user = Object.fromEntries(formData.entries());
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-        const {data, error} = await authClient.signUp.email({
-            ...user,
-            callbackURL: "/"
-        })
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") 
+    const email = formData.get("email") 
+    const password = formData.get("password") 
 
-        if(data){
-            console.log(data);
-        }
-        if(error){
-            console.log(error);
-        }
-    };
+    try {
+      const { data, error } = await authClient.signUp.email({
+        name,
+        email,
+        password,
+        callbackURL: "/",
+      });
+
+      if (data) {
+        toast.success('সফলভাবে রেজিস্ট্রেশন সম্পূর্ণ হয়েছে!');
+      }
+
+      if (error) {
+        toast.error(error.message || "রেজিস্ট্রেশন ব্যর্থ হয়েছে। আবার চেষ্টা করুন।");
+      }
+    } catch (err) {
+      toast.error("একটি সমস্যা দেখা দিয়েছে!");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-300 p-2">
-      <form
-        onSubmit={onSubmit}
-        className="w-full max-w-md">
+      <form onSubmit={onSubmit} className="w-full max-w-md">
         <fieldset className="fieldset bg-base-100 border-base-200 shadow-xl rounded-2xl w-full border p-6 md:p-8">
           {/* Header Title */}
           <div className="text-center mb-6">
@@ -68,8 +84,12 @@ const SignUpPage = () => {
           />
 
           {/* Sign Up Button */}
-          <button type="submit" className="btn py-2 bg-[#0F8B4D] text-white rounded-2xl w-full mt-6 font-semibold shadow-md">
-            রেজিস্ট্রেশন করুন
+          <button 
+            type="submit" 
+            disabled={loading}
+            className="btn py-2 cursor-pointer bg-[#0F8B4D] text-white rounded-2xl w-full mt-6 font-semibold shadow-md disabled:opacity-50"
+          >
+            {loading ? "প্রসেসিং হচ্ছে..." : "রেজিস্ট্রেশন করুন"}
           </button>
 
           {/* Footer Link to Sign In */}

@@ -3,9 +3,9 @@ import Banner from "./banner/page";
 import HighPrice from "./components/HighPrice";
 import Marque from "./components/Marque";
 import LowPrice from "./components/LowPrice";
-
 import Loading from "./loading";
 import AllProduct from "./all-product/page";
+
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <Suspense fallback={<Loading />}>
         <Marque />
       </Suspense>
-
+      
       <Banner />
 
       <Suspense fallback={<Loading />}>

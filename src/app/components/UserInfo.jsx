@@ -30,7 +30,7 @@ const UserInfo = () => {
             <span className="text-xs font-semibold text-gray-800 leading-tight">
               {user.name}
             </span>
-            <span className="text-[11px] text-gray-400 font-medium truncate max-w-[140px]">
+            <span className="text-[11px] text-gray-400 font-medium truncate max-w-35">
               {user.email}
             </span>
           </div>

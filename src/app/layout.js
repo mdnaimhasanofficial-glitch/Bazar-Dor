@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Noto_Serif_Bengali({
   variable: "--font-geist-sans",
@@ -31,7 +32,12 @@ export default function RootLayout({ children }) {
           <Navbar />
             <main className="grow">{children}</main>
           <Footer />
+          
         </Suspense>
+        <Toaster
+            position="top-right"
+            
+          />
       </body>
     </html>
   );

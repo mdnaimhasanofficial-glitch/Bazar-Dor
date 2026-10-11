@@ -1,40 +1,33 @@
 'use client'
 import { authClient } from "@/lib/auth-client";
+import { toast } from "@heroui/react";
 import Link from "next/link";
 import React, { useState } from "react";
 
 const SignInPage = () => {
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage("");
-    setLoading(true);
+  
 
     const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries())
 
-    try {
+   
       const { data, error } = await authClient.signIn.email({
         ...user,
         callbackURL: "/",
       });
 
       if (error) {
-        console.error("Sign in error:", error);
-        setErrorMessage(error.message || "লগইন করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+        toast.error(error.message)
+        
       }
 
       if (data) {
-        console.log("Logged in successfully:");
+        toast.success("Sign In successfully!")
       }
-    } catch (err) {
-      console.error(err);
-      setErrorMessage("একটি অপ্রত্যাশিত ত্রুটি ঘটেছে।");
-    } finally {
-      setLoading(false);
-    }
+    
   };
 
   return (
@@ -48,12 +41,7 @@ const SignInPage = () => {
           </p>
         </div>
 
-        {/* Error Alert */}
-        {errorMessage && (
-          <div className="alert alert-error text-xs p-3 mb-4 rounded-xl">
-            <span>{errorMessage}</span>
-          </div>
-        )}
+       
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email Input */}
@@ -95,10 +83,10 @@ const SignInPage = () => {
           {/* Login Button */}
           <button
             type="submit"
-            disabled={loading}
-            className="btn text-white bg-[#0F8B4D] hover:bg-[#0d7843] active:scale-[0.98] w-full mt-6 font-semibold shadow-md rounded-xl transition-all border-none"
+            
+            className="btn text-white py-2 bg-[#0F8B4D] hover:bg-[#0d7843] active:scale-[0.98] w-full mt-6 font-semibold shadow-md rounded-xl transition-all border-none"
           >
-            {loading ? <span className="loading loading-spinner loading-sm"></span> : "লগইন করুন"}
+             <span className="loading  loading-spinner loading-sm">লগইন করুন</span> 
           </button>
         </form>
 
