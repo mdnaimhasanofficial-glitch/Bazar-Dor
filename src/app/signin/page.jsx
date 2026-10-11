@@ -42,7 +42,14 @@ export default function SignInPage() {
       provider: "google",
       callbackURL: "/",
     });
-    console.log(data)
+   
+  };
+  const handleSocialLoginGit = async () => {
+    const data = await authClient.signIn.social({
+      provider:"github",
+      callbackURL: "/",
+    });
+    
   };
 
   return (
@@ -88,10 +95,10 @@ export default function SignInPage() {
         <div className="divider text-xs text-base-content/50 my-4">অথবা</div>
 
         <div className="grid grid-cols-2 gap-2">
-          <button onClick={handleSocialLogin} className="btn btn-outline btn-sm rounded-xl">
+          <button onClick={handleSocialLogin} className="btn border cursor-pointer py-2 hover:bg-gray-300 btn-outline btn-sm rounded-xl">
             Google
           </button>
-          <button onClick={ handleSocialLogin} className="btn btn-outline btn-sm rounded-xl">
+          <button onClick={ handleSocialLoginGit} className="btn border py-2 cursor-pointer hover:bg-gray-300 btn-outline btn-sm rounded-xl">
             GitHub
           </button>
         </div>
