@@ -35,8 +35,9 @@ const UserInfo = () => {
               {user.email}
             </span>
           </div>
-          <button onClick={handleSignOut} className="btn">Sign Out</button>
+          
         </div>
+        <button onClick={handleSignOut} className="btn">Sign Out</button>
         </Link>
       ) : (
         <div className="flex items-center gap-2">
