@@ -43,6 +43,6 @@
 আপনার কম্পিউটারে প্রজেক্টটি লোকালি রান করতে নিচের ধাপগুলো অনুসরণ করুন:
 
 ### ১. রিপোজিটরি ক্লোন করুন
-```bash
+
 git clone [https://github.com/your-username/bazar-dor.git](https://github.com/your-username/bazar-dor.git)
 cd bazar-dor
