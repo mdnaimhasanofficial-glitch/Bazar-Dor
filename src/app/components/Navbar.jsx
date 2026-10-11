@@ -3,12 +3,13 @@ import React from 'react';
 import { MdShoppingCart } from 'react-icons/md';
 import NavLinks from './NavLinks';
 import UserInfo from './UserInfo';
+import Marque from './Marque';
 const date = new Date().toLocaleDateString("bn-BD", {dateStyle: "full"});
 
 const Navbar = () => {
 
     return (
-        <header className="bg-white sticky top-0">
+        <header className="bg-white ">
             {/* Top Section - Logo & Auth Buttons */}
             <div className="border-b border-gray-100">
                 <div className='container mx-auto px-4'>
@@ -40,7 +41,9 @@ const Navbar = () => {
             </div>
             
             {/* Bottom Border for the whole Navbar */}
-            <div className="border-b border-gray-100"></div>
+            <div className="border-b border-gray-100">
+                <Marque/>
+            </div>
         </header>
     );
 };

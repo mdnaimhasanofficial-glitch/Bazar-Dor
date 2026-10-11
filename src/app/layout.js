@@ -34,10 +34,7 @@ export default function RootLayout({ children }) {
           <Footer />
           
         </Suspense>
-        <Toaster
-            position="top-right"
-            
-          />
+        <Toaster position="top-center" />
       </body>
     </html>
   );

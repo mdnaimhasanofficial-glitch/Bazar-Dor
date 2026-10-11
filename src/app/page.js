@@ -10,9 +10,9 @@ import AllProduct from "./all-product/page";
 export default function Home() {
   return (
     <main className="space-y-6">
-      <Suspense fallback={<Loading />}>
+      {/* <Suspense fallback={<Loading />}>
         <Marque />
-      </Suspense>
+      </Suspense> */}
       
       <Banner />
 

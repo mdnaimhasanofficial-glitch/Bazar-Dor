@@ -1,11 +1,8 @@
 'use client';
-
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import React, { useState } from "react";
-// 1. Toast ইম্পোর্ট করুন (যদি react-hot-toast ব্যবহার করেন)
 import { toast } from "react-hot-toast"; 
-// নোট: আপনি যদি 'sonner' ব্যবহার করেন, তবে লিখুন: import { toast } from "sonner";
 
 const SignUpPage = () => {
   const [loading, setLoading] = useState(false);
