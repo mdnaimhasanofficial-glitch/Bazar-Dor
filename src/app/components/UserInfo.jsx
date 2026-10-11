@@ -37,7 +37,7 @@ const UserInfo = () => {
           </div>
           
         </div>
-        <button onClick={handleSignOut} className="btn">Sign Out</button>
+        <button onClick={handleSignOut} className="btn py-2 bg-blue-500 rounded-2xl px-2 text-white ml-20 mt-2 cursor-pointer">Sign Out</button>
         </Link>
       ) : (
         <div className="flex items-center gap-2">
