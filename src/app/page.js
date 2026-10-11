@@ -10,15 +10,13 @@ import AllProduct from "./all-product/page";
 export default function Home() {
   return (
     <main className="space-y-6">
-      {/* <Suspense fallback={<Loading />}>
-        <Marque />
-      </Suspense> */}
+
       
       <Banner />
 
-      <Suspense fallback={<Loading />}>
-        <HighPrice />
-      </Suspense>
+     
+      <HighPrice />
+  
 
       <Suspense fallback={<Loading />}>
         <LowPrice />

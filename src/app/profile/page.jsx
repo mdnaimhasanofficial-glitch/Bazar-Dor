@@ -25,7 +25,7 @@ const ProfilePage = () => {
                 {/* User Info Header */}
                 <div className="flex flex-col items-center text-center pb-6 border-b border-gray-100 dark:border-zinc-800">
                     <Avatar 
-                        src={user?.image || ''} 
+                        src={user?.image} 
                         name={user?.name || 'User'} 
                         className="w-20 h-20 text-large border-2 border-emerald-500 shadow-md mb-3" 
                     />
