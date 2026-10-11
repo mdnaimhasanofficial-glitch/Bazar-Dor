@@ -2,11 +2,13 @@ import Link from 'next/link';
 import React from 'react';
 import { MdShoppingCart } from 'react-icons/md';
 import NavLinks from './NavLinks';
+import UserInfo from './UserInfo';
 const date = new Date().toLocaleDateString("bn-BD", {dateStyle: "full"});
 
 const Navbar = () => {
+
     return (
-        <header className="bg-white">
+        <header className="bg-white sticky top-0">
             {/* Top Section - Logo & Auth Buttons */}
             <div className="border-b border-gray-100">
                 <div className='container mx-auto px-4'>
@@ -25,12 +27,7 @@ const Navbar = () => {
                         
                         {/* Auth Buttons */}
                         <div className="flex items-center gap-5">
-                            <button className="text-sm font-bold text-gray-800 hover:text-[#0f8b4d] transition-colors">
-                                সাইন ইন
-                            </button>
-                            <button className="bg-[#0f8b4d] text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-green-700 transition-colors">
-                                সাইন আপ
-                            </button>
+                            <UserInfo/>
                         </div>
                         
                     </div>

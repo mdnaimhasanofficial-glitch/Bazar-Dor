@@ -12,7 +12,7 @@ const Marque = async () => {
     const data = await res.json();
 
     return (
-        <div className="bg-white border-b border-gray-100 py-2.5">
+        <div className="bg-white border-b sticky top-34 border-gray-100 py-2.5">
             <Marquee direction='left' speed={100} pauseOnHover={true}>
                 {
                     data.map((h, i) => {
