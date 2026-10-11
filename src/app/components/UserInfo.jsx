@@ -15,7 +15,8 @@ const UserInfo = () => {
   return (
     <div className="flex items-center gap-3">
       {user ? (
-        <div className="flex items-center gap-3 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-gray-100 shadow-sm transition-all hover:shadow-md">
+        <Link href={`/profile`}>
+          <div className="flex items-center gap-3 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-gray-100 shadow-sm transition-all hover:shadow-md">
           <Avatar className="rounded-full ring-2 ring-[#0f8b4d]/20">
             <Avatar
               alt={user.name || "User Avatar"}
@@ -36,6 +37,7 @@ const UserInfo = () => {
           </div>
           <button onClick={handleSignOut} className="btn">Sign Out</button>
         </div>
+        </Link>
       ) : (
         <div className="flex items-center gap-2">
           <Link href={`/signin`}>
